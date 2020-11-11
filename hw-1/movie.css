@@ -1,0 +1,33 @@
+body{
+	background-image:url("images/background.png");
+	margin:none;
+	padding:none;
+	position:relative;
+}
+h1{
+	text-align:center;
+	font-size:24pt;
+	font-weight:bold;
+	font-family:"Times New Roman";
+	text-shadow:3px 3px #999999;
+}
+p{
+	font-size:12px;
+}
+#span1{
+	font-size:48pt;
+	color:red;
+	font-weight:bold;
+	font-family:Arial;
+	position:absolute;
+	top:10px;
+	left:100px;
+	
+}
+#d1{
+	background-image:url("images/rbg.png");
+	height:83px;
+	position:relative;
+	overflow:hidden;
+	margin-bottom:1em;
+}
