@@ -4,6 +4,16 @@ body{
 	padding:none;
 	position:relative;
 }
+footer{
+	background-color:#a2b964;
+	text-align:center;
+	
+}
+#w3c{
+	position:absolute;
+	right:2px;
+	bottom:2px;
+}
 h1{
 	text-align:center;
 	font-size:24pt;
@@ -31,3 +41,77 @@ p{
 	overflow:hidden;
 	margin-bottom:1em;
 }
+#stranica{
+	width:55%;
+	/*position:absolute;
+	left:22.5%;*/
+	background-color:#eeeeee;
+	outline:5px solid gray;
+	outline-offset:5px;
+	margin: auto;
+	overflow:hidden;
+}
+#glavno{
+	display:flex;
+	flex-direction:row;
+}
+#levi{
+	flex:9;
+	display:flex;
+	flex-direction:column;
+	
+}
+#desni{
+	flex:1;
+	background-color:#a2b964;
+	font-family:Arial;
+	
+}
+#desni > img{
+	/*width:150px;*/
+}
+.quotebubble{
+	font-size:13pt;
+	font-family:Arial;
+	width:90%;
+	background-color:#ffffff;
+	border:2px solid #cccccc;
+	border-radius:12px;
+	padding:1em;
+	margin-left:2.5%;
+	margin-right:2.5%;
+}
+p:not(.quotebubble){
+	font-size:13pt;
+	margin-left:2.5%;
+}
+p:not(.quotebubble) > img{
+	float:left;
+	margin-right:5px;
+}
+.quotebubble > img{
+	margin-right:5px;
+	margin-bottom:5px;
+	float:left;
+ }
+.quotebubble > q {
+	
+}
+.publication{
+    font-style: italic;
+}
+dt{
+    font-weight: bold;
+    margin-top: 15px;
+}
+dl{
+    font-size: 12pt;
+    font-family: Arial;
+	padding: 15px;
+}
+#w3c{
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+}
+
