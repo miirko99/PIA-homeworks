@@ -1,0 +1,36 @@
+.naslov{
+	text-align:center;
+}
+input{
+	margin:20px;
+}
+label{
+	width:40px;
+}
+.row{
+	margin-Top:20px;
+}
+.fa-facebook{
+    color: #3b5998;
+
+}
+.fa-twitter{
+    color: #3273a8 ;
+}
+.fa-instagram{
+    color: #ad4b9f;
+}
+.fa-facebook:hover,
+.fa-twitter:hover,
+.fa-instagram:hover {
+    color: #aeaeae;
+}
+footer{
+	background-color:#eeeeee;
+}
+.drMreze a{
+    font-size: 4.5em;
+    padding: 4rem;
+
+
+}
