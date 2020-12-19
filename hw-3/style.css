@@ -1,0 +1,54 @@
+#holder{
+	width:500px;
+	height:500px;
+	background-color:rgb(135,208,233);
+	margin:auto;
+	position:relative;
+	padding:15px;
+	border-radius:5%;
+
+}
+body{
+	background-color:#999
+}
+#imeKviza{
+	text-align:center;
+	font-size:28pt;
+	color:red;
+	font-family:courgette;
+}
+#labelIme{
+	position:absolute;
+	left:50%;
+	top:25%;
+	transform:translate(-50%,-50%)
+}
+#inputIme{
+	position:absolute;
+	left:50%;
+	top:30%;
+	transform:translate(-50%,-50%)
+
+}
+#btnPotvrdi{
+	position:absolute;
+	left:50%;
+	top:40%;
+	transform:translate(-50%,-50%)
+}
+
+	width:100%;
+	min-height:10px;
+
+.btn{
+	margin:5px;
+	height:40px;
+	width:150px;
+	color:white;
+	background-color:#ccc;
+	display:inline-block;
+	border-radius:10%;
+	cursor:pointer;
+	
+}
+
