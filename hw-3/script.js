@@ -239,3 +239,23 @@ function potvrdiOdg(){
 	}
 	clearInterval(interval)
 }
+class rezultat{
+	ime=""
+	poeni=0
+	constructor(ime,poeni){
+		this.ime=ime
+		this.poeni=poeni
+	}
+	veci(rez){
+		if(this.poeni>rez.poeni) return true
+		if(this.poeni<rez.poeni) return false
+		if(this.ime<=rez.ime) return true
+		return false
+	}
+	manji(rez){
+		if(this.poeni<rez.poeni) return true
+		if(this.poeni>rez.poeni) return false
+		if(this.ime>rez.ime) return true
+		return false
+	}
+}
