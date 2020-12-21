@@ -9,11 +9,11 @@
 
 }
 body{
-	background-color:#999
+	background-color:#F3F3F3
 }
 #imeKviza{
 	text-align:center;
-	font-size:28pt;
+	font-size:32pt;
 	color:red;
 	font-family:courgette;
 }
@@ -36,6 +36,12 @@ body{
 	top:40%;
 	transform:translate(-50%,-50%)
 }
+#btnRezultati{
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform:translate(-50%,-50%)
+}
 #pitanje{
 	max-height:150px;
 	height:auto;
@@ -55,7 +61,11 @@ body{
 	cursor:pointer;
 	
 }
-
+.odgovorh:hover{
+	border:1px dashed #444;
+	background-color:#fff3;
+	
+}
 #timer{
 	width:100%;
 	min-height:10px;
@@ -70,7 +80,7 @@ body{
 	height:40px;
 	width:150px;
 	color:white;
-	background-color:#ccc;
+	background-color:#222;
 	display:inline-block;
 	border-radius:10%;
 	cursor:pointer;
@@ -87,4 +97,7 @@ body{
 	width:200px;
 	height:20px;
 	
+}
+ol{
+    font-size: 25px;
 }
