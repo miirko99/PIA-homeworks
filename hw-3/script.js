@@ -18,14 +18,17 @@ fetch('questions.json')
 var timer
 var poeni=0;
 var ime="";
+var time
 
 var scores=[]		
 function pocetniEkran(){
 	holder.innerHTML=`<p id="imeKviza">KVIZ</p>
 		<label for="inputIme" id="labelIme">Unesite vase ime</label>
-    	<input type='text' id='inputIme' placeholder='Vase ime?' autocomplete='off'></br>
-		<button onclick='potvrdi()' class='btn' id='btnPotvrdi'>Potvrdi</button>
-		<button onclick='prikaziRezultate()' class='btn' id='btnRezultati'>Lista rezultata</button>`
+			<input type='text' id='inputIme' placeholder='Vase ime?' autocomplete='off'></br>
+		<div id="buttons">
+			<button onclick='potvrdi()' class='btn' id='btnPotvrdi'>Potvrdi</button>
+			<button onclick='prikaziRezultate()' class='btn' id='btnRezultati'>Lista rezultata</button>
+		</div>`
 	iskorisceniIndeksi=[]
 	poeni=0
 	ime=""
@@ -44,7 +47,6 @@ function prikaziPravila(){
 	holder.innerHTML=`<h1>Pravila kviza</h1><p>Pravila kviza su jednostavna, dobijate 10 pitanja za neka cete dobiti ponudjene odgovore, za neka ne. Svako pitanje vredi 1 poen negativnih poena nema. Za svako pitanje imate tacno 20s da odgovorite, ako ne odgovorite prelazi se na sledece pitanje. Pritiskom na dugme dalje pitanje se preskace i ne mozete se vratiti na to pitanje. U svakom trenutku mozete da odustanete ali vas rezultat ce biti sacuvan</br> Srecno.</p><button onclick='zapocniIgru()' id='btnZapocni' class='btn'>Pocni kviz</button>`
 }
 function zapocniIgru(){
-	holder.innerHTML="<div id='QIA'></div>"
 	sledecePitanje()	
 }
 var indexPitanja
@@ -63,8 +65,7 @@ function randomIndeks(){
 	return indexPitanja
 }
 function sledecePitanje(){
-	var QIA=document.getElementById("QIA")
-	QIA.innerHTML=""
+	holder.innerHTML=''
 	indexPitanja=randomIndeks()
 	if(indexPitanja==-1){
 		var rez=new rezultat(ime,poeni)
@@ -74,25 +75,33 @@ function sledecePitanje(){
 		return
 	}
 	var pitanje=pitanja[indexPitanja]
+	var z=document.createElement("div")
+	z.id="zaglavlje"
 	var d=document.createElement('div')
 	d.id="pitanje"
 	d.innerHTML=pitanje.pitanje
-	QIA.appendChild(d)
-	d=document.createElement("progress")
-	d.min=0
-	d.max=20
-	d.value=0
+	z.appendChild(d)
+	d=document.createElement("div")
 	d.id="timer"
-	QIA.appendChild(d)
+	d.innerHTML='<div><div>20</div></div>'
+	time=20
+	z.appendChild(d)
+	holder.appendChild(z)
+	let b=document.createElement("div")
+	b.id="buttons"
+	holder.appendChild(b)
 	timer=document.getElementById("timer")
 	interval=setInterval(()=>{
-		timer.value+=1;
-		if(timer.value==timer.max){
+		time--
+		timer.innerHTML='<div><div>'+time+'</div></div>';
+		if(time<=0){
 			clearInterval(interval)
 			noTime()
 		}
 	},1000)
 	if(pitanje.ponudjeni==true){
+		let odgovori=document.createElement("div")
+		odgovori.id="odgovori"
 		for(let p of pitanje.odgovori){
 			d=document.createElement("div")
 			d.classList.add("odgovor")
@@ -100,18 +109,20 @@ function sledecePitanje(){
 			d.innerHTML=p.odgovor
 			d.onclick=proveriOdg
 			
-			QIA.appendChild(d)
+			odgovori.appendChild(d)
 		}
+	holder.appendChild(odgovori)
 	}else{
 		d=document.createElement("input")
 		d.id='inputOdg'
 		d.placeholder="Vas odgovor"
-		QIA.appendChild(d)
+		d.autocomplete="off"
+		holder.appendChild(d)
 		d=document.createElement('button')
 		d.classList.add('btn')
 		d.innerHTML="Potvrdi"
 		d.onclick=potvrdiOdg
-		QIA.appendChild(d)
+		b.appendChild(d)
 		
 		
 	}
@@ -120,22 +131,24 @@ function sledecePitanje(){
 	d.classList.add("btn")
 	d.innerHTML="Preskoci"
 	d.onclick=proveriOdg
-	QIA.appendChild(d)
+	b.appendChild(d)
 
 	d=document.createElement("button")
 	d.classList.add("btn")
 	d.innerHTML="Odustani"
 	d.onclick=()=>{
 		scores.push(new rezultat(ime,poeni))
-		pocetniEkran()
+		prikaziRezultat()
 		clearInterval(interval)
 	}
-	QIA.appendChild(d)
+	b.appendChild(d)
+	holder.appendChild(b)
 	
 	
 }
 
 function proveriOdg(e){
+	clearInterval(interval)
 	var odg=document.getElementsByClassName("odgovor")
 	for(let i=0;i<odg.length;i++){
 		if(odg[i]==e.target){
@@ -155,9 +168,11 @@ function proveriOdg(e){
 			odg[i].classList.add("tacan")
 		}
 	}
-	document.getElementById("btnPreskoci").onclick=null
+	let buttons=document.getElementsByClassName("btn")
+	for(let b of buttons){
+		b.onclick=null
+	}
 	setTimeout(sledecePitanje,3000)
-	clearInterval(interval)
 }
 
 function noTime(){
@@ -177,11 +192,13 @@ function noTime(){
 	clearInterval(interval)
 }
 function potvrdiOdg(){
-	if(document.getElementById("inputOdg").value.toLowerCase==pitanja[indexPitanja].odgovori.toLowerCase){
+	if(document.getElementById("inputOdg").value.toLowerCase()==pitanja[indexPitanja].odgovori.toLowerCase()){
 		poeni+=1
 	}
-	document.getElementsByClassName("btn")[0].onclick=null
-	document.getElementsByClassName("btn")[1].onclick=null
+	let buttons=document.getElementsByClassName("btn")
+	for(let b of buttons){
+		b.onclick=null
+	}
 	setTimeout(sledecePitanje,3000)
 	clearInterval(interval)
 }
@@ -242,13 +259,14 @@ function prikaziRezultat(){
 	e.id="rezultat"
 	e.innerText="Igra je gotova vas rezultat je "+poeni+" poena."
 	holder.appendChild(e)
-
+	let buttons=document.createElement("div")
+	buttons.id="buttons"
 	e=document.createElement("button")
 	e.classList.add("btn")
 	e.id="menu"
 	e.innerText="Menu"
 	e.onclick=pocetniEkran
-	holder.appendChild(e)
+	buttons.appendChild(e)
 	e=document.createElement("button")
 	e.classList.add("btn")
 	e.id="retry"
@@ -258,5 +276,6 @@ function prikaziRezultat(){
 		poeni=0
 		zapocniIgru()
 	}
-	holder.appendChild(e)
+	buttons.appendChild(e)
+	holder.appendChild(buttons)
 }
