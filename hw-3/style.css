@@ -1,6 +1,6 @@
 #holder{
 	width:500px;
-	height:500px;
+	height:550px;
 	background-color:rgb(135,208,233);
 	margin:auto;
 	position:relative;
@@ -18,12 +18,15 @@ body{
 	font-family:courgette;
 }
 #labelIme{
+	font-size: 18px;
 	position:absolute;
 	left:50%;
-	top:25%;
+	top:23%;
 	transform:translate(-50%,-50%)
 }
 #inputIme{
+	height: 30px;
+	font-size: 24px;
 	position:absolute;
 	left:50%;
 	top:30%;
@@ -81,9 +84,9 @@ body{
 	width:150px;
 	color:white;
 	background-color:#222;
-	display:inline-block;
-	border-radius:10%;
+	border-radius:10px;
 	cursor:pointer;
+  
 	
 }
 .btn:hover{
@@ -103,4 +106,15 @@ body{
 }
 ol{
     font-size: 25px;
+}
+#menu, #retry{
+	margin-left: 175px;
+
+}
+#rezultat{
+	width: 300px;
+	background-color: #fffd;
+	padding: 10px;
+	margin:30px auto 10px auto;
+	border-radius: 10px;
 }
