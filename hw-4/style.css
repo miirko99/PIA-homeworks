@@ -1,0 +1,73 @@
+body{
+	background-color: rgb(154, 196, 230);
+}
+#holder{
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform:translate(-50%,-50%);
+	width:400px;
+	height:500px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	border-radius: 10px;
+	background-color: white;
+}
+.btn{
+	background-color:rgb(47, 108, 158) ;
+	border-radius: 5px;
+	width: 100px;
+	height:30px;
+	margin: auto;
+	color:white;
+	font-weight: bold;
+	
+}
+.btn.login{
+	width:200px;
+	height:60px;
+	font-size: 20px;
+}
+input{
+	margin: auto;
+	width: 80%;
+	height:50px;
+	border:1px solid black;
+}
+#buttons{
+	height: 40px;
+	display: flex;
+	justify-content: space-around;
+}
+.film{
+	background-color: white;
+	font-weight: bold;
+	font-size: 40px;
+	border: 2px solid red;
+	margin: 20px;
+	border-radius: 15px;
+}
+#search{
+	width:200px;
+	height: 30px;
+}
+#filmovi{
+	margin:20px;
+	display: flex;
+	flex-direction: column;
+	justify-items: center;
+}
+.userfilm{
+	border:3px solid red;
+	background-color: white;
+	border-radius: 10px;
+	padding:10px;
+	margin: 20px;
+	width:180px ;
+}
+.row{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
