@@ -13,10 +13,11 @@ foreach ($users as $row){
   if(($user["email"]==$row["userEmail"]||$user["email"]==$row["userName"]) && $user["password"]==$row["userPassword"]){
     $exist=true;
     $admin=$row["isAdmin"];
+    $username=$row["userName"];
     break;
   }
 }
-echo json_encode(array("exist"=> $exist, "isAdmin"=> $admin));
+echo json_encode(array("exist"=> $exist, "isAdmin"=> $admin, "userName"=>$username ));
 
 
 
